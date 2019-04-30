@@ -16,7 +16,7 @@ if comm == '':
     os.system(comm)
     os.system('git push')
 if comm != '':
-    comm = "git commit -m '" + comm + "'"
+    comm = "git commit -m " + comm
     os.system(comm)
     os.system('git push')
 print('更新完成')
