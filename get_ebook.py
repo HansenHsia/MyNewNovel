@@ -39,7 +39,10 @@ if foi == '1':
     bookdir = '0' * (6 - len(bookid)) + bookid + ' - ' + bookname + '.txt'
     o = input('是否要将下载文件发送到邮箱(1:是;2:否):\n')
     if o=='1':
-        passwd = getpass('发件箱密码:')
+        if platform.system() == 'Windows':
+            passwd = input('发件箱密码:')
+        else:
+            passwd = getpass('发件箱密码:')
         emailto = input('输入接收文件的邮箱:\n')
         sendmail(bookname,bookdir,passwd,emailto)
     if o!='1':
@@ -47,7 +50,8 @@ if foi == '1':
 if foi == '2':
     bookdir = mkdir_bookdir(bookid,bookname)
     chapterpage = mknovelpage(bookid,bookname)
-    for i in range(len(links)):
+    for i in range(3):
+    # for i in range(len(links)):
         title = get_chaptername(baseurl, headers, links[i])
         text = get_text(baseurl, headers, links[i])
         print(title)

@@ -1,4 +1,4 @@
-import smtplib
+import smtplib,platform
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -21,7 +21,10 @@ def sendmail(title,afile,passwd,receiver):
     message.attach(MIMEText(text, 'plain', 'utf-8'))
 
     # 构造附件
-    files = '/root/git/hsiamer.github.io/novels/' + afile
+    if platform.system() == 'Windows':
+        files = 'books\\' + afile
+    else:
+        files = 'books/' + afile
     att1 = MIMEText(open(files, 'rb').read(), 'base64', 'utf-8')
     att1["Content-Type"] = 'application/octet-stream'
 #    att1["Content-Disposition"] = 'attachment;filename=%s' % afile.encode('utf-8')

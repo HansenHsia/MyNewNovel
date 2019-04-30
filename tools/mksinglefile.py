@@ -9,10 +9,10 @@ def mksinglefile(bookname, bookid, baseurl, headers, links):
     bookname = p * (6 - len(bookid)) + bookid + ' - ' + bookname
     cpt = len(links)
     if platform.system() == 'Windows':
-        bookd = '..\\hsiamer.github.io\\novels\\' + bookname + '.txt'
+        bookd = 'books\\' + bookname + '.txt'
         # bookd = 'e:\\books\\' + bookname + '.txt'
     else:
-        bookd = '/root/git/hsiamer.github.io/novels/' + bookname + '.txt'
+        bookd = 'books/' + bookname + '.txt'
     with open(bookd, 'w+', encoding='utf-8') as f:
         f.write('')
         f.close()
